@@ -7,6 +7,8 @@ import cors from 'cors';
 import compression from 'compression';
 import config from 'config';
 import connectToMongoDB from './utils/db';
+import log from './utils/logger';
+import router from './routes';
 
 const app = express();
 
@@ -18,11 +20,12 @@ app.use(compression());
 app.use(cookieParser());
 app.use(bodyParser.json());
 
+app.use(router);
+
 const port = config.get<number>('port');
 const server = http.createServer(app);
 
 server.listen(port, () => {
-    console.log(`Server started on port http://localhost:${port}`);
-
+    log.info(`Server started on port http://localhost:${port}`);
     connectToMongoDB();
 });
