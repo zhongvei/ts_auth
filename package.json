@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "JWT Authentication with Node.js, Tygoose, MongoDB, Mongoose, Docker, Redis, JsonWebToken",
   "main": "app.ts",
+  "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node-dev --respawn --transpile-only ./src/app.ts",
@@ -26,9 +27,12 @@
   },
   "dependencies": {
     "@typegoose/typegoose": "^11.3.0",
+    "@types/argon2": "^0.15.0",
     "@types/body-parser": "^1.19.2",
     "@types/compression": "^1.7.2",
+    "@types/nanoid": "^3.0.0",
     "@types/pino": "^7.0.5",
+    "argon2": "^0.30.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.2",
     "compression": "^1.7.4",
@@ -40,6 +44,7 @@
     "jsonwebtoken": "^9.0.1",
     "lodash": "^4.17.21",
     "mongoose": "^7.3.2",
+    "nanoid": "^4.0.2",
     "pino": "^8.14.1",
     "pino-pretty": "^10.0.1",
     "redis": "^4.6.7",
