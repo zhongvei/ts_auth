@@ -1,10 +1,10 @@
-import { createUserHandler } from "@/controller/userController.js";
-import validateResource from "@/middleware/validateResource.js";
-import { createUserSchema } from "@/schema/userSchema.js";
+import { createUserHandler } from "../controller/userController.ts";
+import validateResource from "../middleware/validateResource.ts";
+import { createUserSchema } from "../schema/userSchema.ts";
 import express from "express";
 
-const router = express.Router();
+const userRouter = express.Router();
 
-router.post('/api/users', validateResource(createUserSchema), createUserHandler);
+userRouter.post('/api/users', validateResource(createUserSchema), createUserHandler);
 
-export default router;
+export default userRouter;

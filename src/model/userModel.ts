@@ -1,7 +1,7 @@
 import { prop, getModelForClass, modelOptions, Severity, pre, DocumentType } from '@typegoose/typegoose';
 import { nanoid } from 'nanoid';
 import argon2 from 'argon2';
-import log from '@/utils/logger.js';
+import log from '../utils/logger.ts';
 
 @pre<User>('save', async function () { 
     if (!this.isModified('password')) return;
