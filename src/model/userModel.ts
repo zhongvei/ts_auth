@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import argon2 from 'argon2';
 import log from '../utils/logger.ts';
 
-@pre<User>('save', async function () { 
+@pre<User>('save', async function () {
     if (!this.isModified('password')) return;
 
     const hash = await argon2.hash(this.password);
@@ -34,20 +34,17 @@ export class User {
     @prop({ required: true, default: () => nanoid() })
     verificationCode: string;
 
-    @prop({ required: true, })
+    @prop({ default: null })
     passwordResetCode: string | null;
 
-    @prop({ required: true, })
-    verified: boolean;
-
-    @prop({default: false})
+    @prop({ default: false })
     verfied: boolean;
 
     async validatePassword(this: DocumentType<User>, password: string) {
-        try {   
+        try {
             const valid = await argon2.verify(this.password, password);
             return valid;
-        } catch(e) {
+        } catch (e) {
             log.error(e);
             return false;
         }
