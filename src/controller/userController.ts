@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
-import { CreateUserInput, VerifyUserInput } from "../schema/userSchema.ts";
-import { createUser, findUserById } from "../service/userService.ts";
+import { CreateUserInput, VerifyUserInput, ForgotPasswordInput, ResetPasswordInput } from "../schema/userSchema.ts";
+import { createUser, findUserById, findUserByEmail } from "../service/userService.ts";
 import log from "../utils/logger.ts";
-import sendEmail from "../utils/mailer";
+import sendEmail from "../utils/mailer.ts";
 import { Request, Response } from "express";
+import { nanoid } from "nanoid";
 
 export async function createUserHandler(req: Request<{}, {}, CreateUserInput>, res: Response) {
     const body = req.body;
@@ -18,13 +19,13 @@ export async function createUserHandler(req: Request<{}, {}, CreateUserInput>, r
             text: `Verify your account by using this verification code ${user.verificationCode} for the user id ${user._id}`,
         })
         return res.send("User created successfully");
-    } catch(e: any) {
+    } catch (e: any) {
         log.error(e);
         return res.status(409).send(e.message);
     }
 };
 
-export async function verifyUserHandler (req: Request<VerifyUserInput>, res: Response) {
+export async function verifyUserHandler(req: Request<VerifyUserInput>, res: Response) {
     const { id, verificationCode } = req.params;
     // find user by id and check if verification code matches
 
@@ -53,3 +54,54 @@ export async function verifyUserHandler (req: Request<VerifyUserInput>, res: Res
         return res.send('User verified successfully').status(200);
     }
 };
+
+export async function forgotPasswordHandler(req: Request<{}, {}, ForgotPasswordInput>, res: Response) {
+    const { email } = req.body;
+    const user = await findUserByEmail(email);
+
+    if (!user) {
+        log.debug(`User not found with email ${email}`);
+        return res.send('User not found').status(404);
+    }
+
+    if (!user.verified) {
+        log.debug(`User not verified with email ${email}`);
+        return res.send('User not verified').status(409);
+    }
+
+    const passwordResetCode = nanoid();
+
+    user.passwordResetCode = passwordResetCode;
+    await user.save();
+
+    await sendEmail({
+        from: 'test@gmail.com',
+        to: user.email,
+        subject: 'Reset Your Password',
+        text: `Password reset code ${passwordResetCode} for the user id ${user._id}`,
+    })
+
+    log.debug(`Password reset code sent to ${email}`);
+
+    return res.send('Password reset code sent successfully').status(200);
+}
+
+export async function resetPasswordHandler(req: Request<ResetPasswordInput['params'], {}, ResetPasswordInput['body']>, res: Response) {
+    const { id, passwordResetCode } = req.params;
+
+    const { password } = req.body;
+
+    const user = await findUserById(id);
+
+    if (!user || !user.passwordResetCode || user.passwordResetCode !== passwordResetCode) {
+        return res.send('Invalid password reset code').status(400);
+    }
+
+    user.passwordResetCode = null;
+    user.password = password;
+    await user.save();
+
+    log.debug(`Password reset successfully for user ${user._id}`);
+    return res.send('Password reset successfully').status(200);
+
+}
