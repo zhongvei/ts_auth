@@ -7,8 +7,8 @@ export const createSessionSchema = object({
         }).email(),
         password: string(({
             required_error: 'Password is required',
-        })).min(6, 'Password must be at least 8 characters'),
+        })).min(6, 'Password must be at least 6 characters'),
     }),
 });
 
-export type CreateSessionInput = TypeOf<typeof createSessionSchema>;
+export type CreateSessionInput = TypeOf<typeof createSessionSchema>['body'];
