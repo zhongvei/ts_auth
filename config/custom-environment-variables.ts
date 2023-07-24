@@ -1,37 +1,6 @@
 export default {
-    accessTokenPrivateKey: `
-    MIICXAIBAAKBgQCuc/MweC6t81TnvzGysq2hkBOG2qa50SV0DIlK/VC/BzYdCLIn
-    +MvNUC87ow7hjNFtPIGapuOg0GsTxYICWak4bnDbh3p1OrgrIk/tgkaFMJSuBA/F
-    kCjWcGrUPBcSDeO5ojCopUaijgstwr5uUUuBPrEj7UZyCxQtrWCmXxSXbQIDAQAB
-    AoGAYMVNB3wDWNb8KDm01c2r501Gp62ugrDzt7YkioaOPglACUcDnIy0cMWkDc7b
-    uF4m5hOESUd+SXyTiTosbiVSamKsK6c7x6/Me9KPstRWhY4pzKsf2Y0agaoIrbPJ
-    zl2Qpv/vCec2U3nh5oS+gu1azGquHz/zzOS9nURQwNEQETkCQQDbNAA47IjRnh5v
-    nSYD3HMHn9wmnsWy034lVfFVgbuCZ3wdqu1c+l+Tj2ram9LaGbgmvCU8FccI0qOR
-    N/puSK2PAkEAy7zchbI5kG+5PpwJ0FgPABqdWrZp1oQ1zGVgcJfi2fd/RT5w3LmI
-    T6qPC8KAkQ3cCjUeXa4l6epuemvQna6lQwJBAKeA9SqKlYKY8WkZDROmQcBxyCk6
-    6pfcRWkCY4iTulXL/mwtUXTbXm3ECkNDD7zaKn5vB4UCnzV+wL8Xp6beosECQGl0
-    bih9obITQi0YEzRWAB2rqPsFJC8266nKZ2qgE3mC08uBkGWPWvDxdW0+1dE+/UAD
-    Up5mv5UeFOUk3Sxg84UCQGFLgG+yUww9G1wf6tAMf0Lw6kTbca0uzVMA530jmAkg
-    XsdBe8FtQgmnuOICuMuWLFjxDHW0UitPbt+uidv4EFE=
-    `,
-    accessTokenPublicKey: "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCuc/MweC6t81TnvzGysq2hkBOG2qa50SV0DIlK/VC/BzYdCLIn+MvNUC87ow7hjNFtPIGapuOg0GsTxYICWak4bnDbh3p1OrgrIk/tgkaFMJSuBA/FkCjWcGrUPBcSDeO5ojCopUaijgstwr5uUUuBPrEj7UZyCxQtrWCmXxSXbQIDAQAB",
-    refreshTokenPrivateKey: `MIICWwIBAAKBgQCGWRSRRkF0aVyDrshKzSTCwbJbwCxuKbEj9XPA7//iHhvsB66b
-    +0XcQ2ZBhaUXCN67ywjc0JvYGqE1fbJac/5Mmq6BnOpm3e7cYhih9RFS7m5ih1J/
-    8LXxZUnOSG9BkYAH8MhRLSgyy4NJlfNCCzgKpVC4Fer8A0Lg1H0XiihNLwIDAQAB
-    AoGAOcDfm5f1GWMVtzISvj0z+VklIFYbg3v+v3OLwDwr5vuEi1G+GSXKoWaD9dTK
-    5H0WquocNDilViAUfxc67bGBdq7mchxkoKVVMKvicJugKdfNSpyR69b5Kht1y1Zj
-    8VAKpLFzaUtqGEvLdpOHwtHCim21IQ85dbnD165NXGu8wZkCQQDrUsjRgM0pw3Z9
-    mpziOb7H2b/Gx3FE4UN3QF8lw0+xPmKNh/7AvatxnBTuQM0LjzkOhuzpi5RbIa4Z
-    ojAnE5YNAkEAkicE0MRXCPDjfQn8se8zLXeU7rePcKPPce5weDF6DwkFIjB+xv9/
-    unqbY7dg/Chk+3tuk5V9TvA8IiJh6VE9KwJAcPWtJjwAv9Ju934XXtS/Sqmw0Bd+
-    vMSxIPZKdhMaFwfOQQgN9rFVMdTtiyyaALmAdwO3h6gTz+cL7owXNzrEpQJABehP
-    2IRnJDRgbZhuv150yhywR2niAWKNqwRBRYpybZMmwvgE19RR/F6iU0iBQg/77PJT
-    SOHc+8jYFWUgYgbnmwJATPHzIBgVg1lejsN5GvgrGqZSFp7OGOyOtYB2DhFz8Pix
-    zONaw9Py+X/JCQXEsTD9PmsQkvYxg4R3f46bE1JIUw==`,
-    refreshTokenPublicKey: `
-    MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCGWRSRRkF0aVyDrshKzSTCwbJb
-wCxuKbEj9XPA7//iHhvsB66b+0XcQ2ZBhaUXCN67ywjc0JvYGqE1fbJac/5Mmq6B
-nOpm3e7cYhih9RFS7m5ih1J/8LXxZUnOSG9BkYAH8MhRLSgyy4NJlfNCCzgKpVC4
-Fer8A0Lg1H0XiihNLwIDAQAB
-`,
+    accessTokenPrivateKey: "ACCESS_TOKEN_PRIVATE_KEY",
+    accessTokenPublicKey: "ACCESS_TOKEN_PUBLIC_KEY",
+    refreshTokenPrivateKey: "REFRESH_PRIVATE_KEY",
+    refreshTokenPublicKey: "REFRESH_PUBLIC_KEY",
 }

@@ -1,6 +1,6 @@
-import { CreateSessionInput } from "@/schema/authSchema.ts";
-import { signAcessToken, signRefreshToken } from "@/service/authService";
-import { findUserByEmail } from "@/service/userService";
+import { CreateSessionInput } from "../schema/authSchema.ts";
+import { signAcessToken, signRefreshToken } from "../service/authService.ts";
+import { findUserByEmail } from "../service/userService";
 import { Request, Response } from "express";
 
 export async function createSessionHandler(req: Request<{}, {}, CreateSessionInput>, res: Response) {
@@ -24,7 +24,7 @@ export async function createSessionHandler(req: Request<{}, {}, CreateSessionInp
 
     //sign a access token and refresh token
     const accessToken = signAcessToken(user);
-    const refreshToken = await signRefreshToken({ userId: user._id });
+    const refreshToken = await signRefreshToken({ userId: String(user._id) });
 
     return res.send({ accessToken, refreshToken }).status(200);
 };

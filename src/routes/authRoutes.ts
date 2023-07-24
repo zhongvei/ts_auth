@@ -1,10 +1,10 @@
 import express from 'express';
-import validateResource from '@/middleware/validateResource';
-import { createSessionSchema } from '@/schema/authSchema';
-import { createSessionHandler } from '@/controller/authContoller';
+import validateResource from "../middleware/validateResource.ts";
+import { createSessionSchema } from '../schema/authSchema.ts';
+import { createSessionHandler } from '../controller/authContoller';
 
-const router = express.Router();
+const authRouter = express.Router();
 
-router.post('/api/session',validateResource(createSessionSchema),createSessionHandler);
+authRouter.post('/api/sessions', validateResource(createSessionSchema), createSessionHandler);
 
-export default router;
+export default authRouter;
