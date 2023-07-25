@@ -1,4 +1,5 @@
-import { createUserHandler, forgotPasswordHandler, verifyUserHandler, resetPasswordHandler } from "../controller/userController.ts";
+import requireUser from "../middleware/requireUser.ts";
+import { createUserHandler, forgotPasswordHandler, verifyUserHandler, resetPasswordHandler, getCurrentUserHandler } from "../controller/userController.ts";
 import validateResource from "../middleware/validateResource.ts";
 import { createUserSchema, verfiyUserSchema, forgotPasswordSchema, resetPasswordSchema } from "../schema/userSchema.ts";
 import express from "express";
@@ -12,5 +13,7 @@ userRouter.post('/api/users/verify/:id/:verificationCode', validateResource(verf
 userRouter.post('/api/users/forgotpassword', validateResource(forgotPasswordSchema), forgotPasswordHandler);
 
 userRouter.post('/api/users/resetpassword/:id/:passwordResetCode', validateResource(resetPasswordSchema), resetPasswordHandler);
+
+userRouter.get('/api/users/me', requireUser, getCurrentUserHandler);
 
 export default userRouter;

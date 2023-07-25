@@ -11,10 +11,18 @@ export function signJwt(
         "base64"
     ).toString("ascii");
 
-    return jwt.sign(object, signingKey, {
-        ...(options && options),
-        algorithm: "RS256",
-    });
+    try{
+        const signAcessToken =  jwt.sign(object, signingKey, {
+            ...(options && options),
+            algorithm: "RS256",
+        });
+    
+        return signAcessToken;
+    } catch (e) {
+        console.log("Error signing jwt");
+        console.log(e);
+        return null;
+    }
 }
 
 export function verifyJwt<T>(

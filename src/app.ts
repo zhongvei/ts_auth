@@ -9,6 +9,7 @@ import config from 'config';
 import connectToMongoDB from './utils/db.ts';
 import log from './utils/logger.ts';
 import router from './routes/index.ts';
+import { deserializeUser } from './middleware/deserializeUser.ts';
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(cors({
 
 app.use(compression());
 app.use(cookieParser());
+app.use(deserializeUser)
 app.use(bodyParser.json());
 
 app.use(router);
