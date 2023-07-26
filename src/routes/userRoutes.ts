@@ -6,14 +6,14 @@ import express from "express";
 
 const userRouter = express.Router();
 
-userRouter.post('/api/users', validateResource(createUserSchema), createUserHandler);
+userRouter.post('/', validateResource(createUserSchema), createUserHandler);
 
-userRouter.post('/api/users/verify/:id/:verificationCode', validateResource(verfiyUserSchema), verifyUserHandler);
+userRouter.post('/verify/:id/:verificationCode', validateResource(verfiyUserSchema), verifyUserHandler);
 
-userRouter.post('/api/users/forgotpassword', validateResource(forgotPasswordSchema), forgotPasswordHandler);
+userRouter.post('/forgotpassword', validateResource(forgotPasswordSchema), forgotPasswordHandler);
 
-userRouter.post('/api/users/resetpassword/:id/:passwordResetCode', validateResource(resetPasswordSchema), resetPasswordHandler);
+userRouter.post('/resetpassword/:id/:passwordResetCode', validateResource(resetPasswordSchema), resetPasswordHandler);
 
-userRouter.get('/api/users/me', requireUser, getCurrentUserHandler);
+userRouter.get('/me', requireUser, getCurrentUserHandler);
 
 export default userRouter;

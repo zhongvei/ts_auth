@@ -5,8 +5,8 @@ import { createSessionHandler, refreshAccessTokenHandler } from '../controller/a
 
 const authRouter = express.Router();
 
-authRouter.post('/api/sessions', validateResource(createSessionSchema), createSessionHandler);
+authRouter.post('/', validateResource(createSessionSchema), createSessionHandler);
 
-authRouter.post('/api/sessions/refresh', refreshAccessTokenHandler);
+authRouter.post('/refresh', refreshAccessTokenHandler);
 
 export default authRouter;

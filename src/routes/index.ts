@@ -8,8 +8,8 @@ router.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-router.use(userRouter);
+router.use('/api/users', userRouter);
 
-router.use(authRouter);
+router.use('/api/sessions',authRouter);
 
 export default router;

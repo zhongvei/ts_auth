@@ -1,8 +1,8 @@
 export default {
-    port: 8000,
-    mongoDBUrl: 'mongodb+srv://zvthien:1giWCGyUboWH0coN@authcluster.6mjo99q.mongodb.net/-typescript',
+    port: process.env.PORT,
+    mongoDBUrl: process.env.MONGO_DB_URL,
     accessTokenExpiresIn: 15,
-    origin: 'http://localhost:3000',
+    origin: `http://localhost:${process.env.PORT}`,
     logLevel: 'debug',
     accessTokenPrivateKey: "",
     refreshTokenPrivateKey: "",
