@@ -1,7 +1,7 @@
 import { prop, getModelForClass, modelOptions, Severity, pre, DocumentType, index } from '@typegoose/typegoose';
 import { nanoid } from 'nanoid';
 import argon2 from 'argon2';
-import log from '../utils/logger.ts';
+import log from '../utils/logger';
 
 export const privateFields = ['password', '__v', 'verificationCode', 'passwordResetCode', 'verified'];
 

@@ -1,4 +1,4 @@
-import UserModel, { User } from "../model/userModel.ts";
+import UserModel, { User } from "../model/userModel";
 
 export async function createUser(body: Partial<User>) {
     return UserModel.create(body);

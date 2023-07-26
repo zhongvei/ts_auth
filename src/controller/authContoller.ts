@@ -1,9 +1,9 @@
 import { get } from "lodash";
-import { CreateSessionInput } from "../schema/authSchema.ts";
-import { findSessionById, signAcessToken, signRefreshToken } from "../service/authService.ts";
+import { CreateSessionInput } from "../schema/authSchema";
+import { findSessionById, signAcessToken, signRefreshToken } from "../service/authService";
 import { findUserByEmail, findUserById } from "../service/userService";
 import { Request, Response } from "express";
-import { verifyJwt } from "../utils/jwt.ts";
+import { verifyJwt } from "../utils/jwt";
 
 export async function createSessionHandler(req: Request<{}, {}, CreateSessionInput>, res: Response) {
     const { email, password } = req.body;

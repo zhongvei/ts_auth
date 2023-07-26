@@ -1,7 +1,7 @@
-import requireUser from "../middleware/requireUser.ts";
-import { createUserHandler, forgotPasswordHandler, verifyUserHandler, resetPasswordHandler, getCurrentUserHandler } from "../controller/userController.ts";
-import validateResource from "../middleware/validateResource.ts";
-import { createUserSchema, verfiyUserSchema, forgotPasswordSchema, resetPasswordSchema } from "../schema/userSchema.ts";
+import requireUser from "../middleware/requireUser";
+import { createUserHandler, forgotPasswordHandler, verifyUserHandler, resetPasswordHandler, getCurrentUserHandler } from "../controller/userController";
+import validateResource from "../middleware/validateResource";
+import { createUserSchema, verfiyUserSchema, forgotPasswordSchema, resetPasswordSchema } from "../schema/userSchema";
 import express from "express";
 
 const userRouter = express.Router();

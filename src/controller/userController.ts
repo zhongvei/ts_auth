@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
-import { CreateUserInput, VerifyUserInput, ForgotPasswordInput, ResetPasswordInput } from "../schema/userSchema.ts";
-import { createUser, findUserById, findUserByEmail } from "../service/userService.ts";
-import log from "../utils/logger.ts";
-import sendEmail from "../utils/mailer.ts";
+import { CreateUserInput, VerifyUserInput, ForgotPasswordInput, ResetPasswordInput } from "../schema/userSchema";
+import { createUser, findUserById, findUserByEmail } from "../service/userService";
+import log from "../utils/logger";
+import sendEmail from "../utils/mailer";
 import { Request, Response } from "express";
 import { nanoid } from "nanoid";
 

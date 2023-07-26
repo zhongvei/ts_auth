@@ -8,7 +8,11 @@ RUN npm install --only=production
 
 COPY . .
 
-ENV PORT=8000
+RUN npm run build
+
+COPY .env ./build
+
+WORKDIR ./dist
 
 EXPOSE 8000
 

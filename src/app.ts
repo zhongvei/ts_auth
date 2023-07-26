@@ -6,10 +6,10 @@ import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import compression from 'compression';
 import config from 'config';
-import connectToMongoDB from './utils/db.ts';
-import log from './utils/logger.ts';
-import router from './routes/index.ts';
-import { deserializeUser } from './middleware/deserializeUser.ts';
+import connectToMongoDB from './utils/db';
+import log from './utils/logger';
+import router from './routes/index';
+import { deserializeUser } from './middleware/deserializeUser';
 
 const app = express();
 
