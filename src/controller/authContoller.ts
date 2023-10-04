@@ -11,17 +11,17 @@ export async function createSessionHandler(req: Request<{}, {}, CreateSessionInp
     const user = await findUserByEmail(email);
 
     if (!user) {
-        return res.send('User not found').status(404);
+        return res.send("User not found").status(404);
     }
 
     if (!user.verified) {
-        return res.send('User not verified').status(409);
+        return res.send("User not verified").status(409);
     }
 
     const passwordValid = await user.validatePassword(password);
 
     if (!passwordValid) {
-        return res.send('Invalid password').status(400);
+        return res.send("Invalid password").status(400);
     }
 
     //sign a access token and refresh token
@@ -29,31 +29,30 @@ export async function createSessionHandler(req: Request<{}, {}, CreateSessionInp
     const refreshToken = await signRefreshToken({ userId: String(user._id) });
 
     return res.send({ accessToken, refreshToken }).status(200);
-};
+}
 
 export async function refreshAccessTokenHandler(req: Request, res: Response) {
     const refreshToken = get(req, "headers.x-refresh");
 
-    const decoded = verifyJwt<{session: string}>(String(refreshToken), "refreshTokenPublicKey");
+    const decoded = verifyJwt<{ session: string }>(String(refreshToken), "refreshTokenPublicKey");
 
-    if(!decoded) {
-        return res.send('Invalid token').status(401);
-    };
+    if (!decoded) {
+        return res.send("Invalid token").status(401);
+    }
 
     const session = await findSessionById(decoded.session);
 
-    if(!session || !session?.valid) {
-        return res.send('Invalid token').status(401);
+    if (!session || !session?.valid) {
+        return res.send("Invalid token").status(401);
     }
 
     const user = await findUserById(String(session.user));
 
     if (!user) {
-        return res.send('User not found').status(404);
+        return res.send("User not found").status(404);
     }
 
     const accessToken = signAcessToken(user);
 
     return res.send({ accessToken }).status(200);
-
 }

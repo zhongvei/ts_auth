@@ -1,4 +1,4 @@
-import { Request, Response, NextFunction } from "express"
+import { Request, Response, NextFunction } from "express";
 import { AnyZodObject } from "zod";
 
 const validateResource = (schema: AnyZodObject) => (req: Request, res: Response, next: NextFunction) => {
@@ -12,6 +12,6 @@ const validateResource = (schema: AnyZodObject) => (req: Request, res: Response,
     } catch (e: any) {
         res.status(400).send(e.message);
     }
-}
+};
 
 export default validateResource;

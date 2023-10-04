@@ -1,7 +1,6 @@
-import config from 'config';
-import nodemailer, { SendMailOptions } from 'nodemailer';
-import log from './logger';
-
+import config from "config";
+import nodemailer, { SendMailOptions } from "nodemailer";
+import log from "./logger";
 
 // use this to create test credentials
 // async function createTestCreds() {
@@ -15,21 +14,21 @@ const smtp = config.get<{
     host: string;
     port: number;
     secure: boolean;
-}>('smtp');
+}>("smtp");
 
 const transporter = nodemailer.createTransport({
     ...smtp,
-    auth: { user: smtp.user, pass: smtp.pass }
-})
+    auth: { user: smtp.user, pass: smtp.pass },
+});
 
 async function sendEmail(payload: SendMailOptions) {
     transporter.sendMail(payload, (err, info) => {
         if (err) {
-            log.error(err, 'error sending email');
+            log.error(err, "error sending email");
             return;
         } else {
-            log.info(info, 'email sent');
-            log.info(nodemailer.getTestMessageUrl(info), 'test url');
+            log.info(info, "email sent");
+            log.info(nodemailer.getTestMessageUrl(info), "test url");
         }
     });
 }

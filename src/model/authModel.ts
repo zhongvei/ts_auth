@@ -1,5 +1,5 @@
-import { getModelForClass, prop, Ref } from '@typegoose/typegoose';
-import { User } from './userModel';
+import { getModelForClass, prop, Ref } from "@typegoose/typegoose";
+import { User } from "./userModel";
 
 export class Auth {
     @prop({ ref: () => User })

@@ -6,17 +6,14 @@ export function signJwt(
     keyName: "accessTokenPrivateKey" | "refreshTokenPrivateKey",
     options?: jwt.SignOptions | undefined
 ) {
-    const signingKey = Buffer.from(
-        config.get<string>(keyName),
-        "base64"
-    ).toString("ascii");
+    const signingKey = Buffer.from(config.get<string>(keyName), "base64").toString("ascii");
 
-    try{
-        const signAcessToken =  jwt.sign(object, signingKey, {
+    try {
+        const signAcessToken = jwt.sign(object, signingKey, {
             ...(options && options),
             algorithm: "RS256",
         });
-    
+
         return signAcessToken;
     } catch (e) {
         console.log("Error signing jwt");
@@ -25,13 +22,8 @@ export function signJwt(
     }
 }
 
-export function verifyJwt<T>(
-    token: string,
-    keyName: "accessTokenPublicKey" | "refreshTokenPublicKey"
-): T | null {
-    const publicKey = Buffer.from(config.get<string>(keyName), "base64").toString(
-        "ascii"
-    );
+export function verifyJwt<T>(token: string, keyName: "accessTokenPublicKey" | "refreshTokenPublicKey"): T | null {
+    const publicKey = Buffer.from(config.get<string>(keyName), "base64").toString("ascii");
 
     try {
         const decoded = jwt.verify(token, publicKey) as T;
